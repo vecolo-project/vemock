@@ -1,4 +1,4 @@
-FROM pypy:3-slim
+FROM python:3-slim
 
 WORKDIR /usr/src/app
 
@@ -14,4 +14,4 @@ ENV station_id=6 \
     history_path="history.json" \
     frequency_wait=2
 
-CMD [ "pypy3","-u", "./main.py" ]
+CMD [ "python","-u", "./main.py" ]
