@@ -30,7 +30,7 @@ class State:
             if self.battery > 15:
                 discharge += round(random.uniform(0.000, 0.010), 3)
         else:
-            discharge = -0.0002
+            discharge = 0.0002 * self.used_seats
 
         # La batterie ne doit pas dépasser 100% et descendre en dessous de 0
         self.battery = min(100., max(0., float("{:.4f}".format(self.battery - discharge))))
@@ -45,8 +45,10 @@ class State:
     def next_state_charge(self):
         current_time = datetime.datetime.now()
         # Elle se décharge régulièrement, un peu moins la nuit (vu que moins d'utilisation)
-        if 8 < current_time.hour < 18:
-            self.charging_power = max(0., min(self.max_charging_power,
-                                              self.charging_power + random.uniform(-self.max_charging_power / 50,
-                                                                                   self.max_charging_power / 50)))
-        self.battery = min(100., max(0., self.battery + (self.charging_power / (self.max_charging_power * 100))))
+        if 8 < current_time.hour < 20:
+            self.charging_power = round(max(0.,
+                                            min(self.max_charging_power,
+                                                self.charging_power + random.uniform(-self.max_charging_power / 50,
+                                                                                     self.max_charging_power / 50))), 4)
+        self.battery = round(min(100.,
+                                 max(0., self.battery + (self.charging_power / (self.max_charging_power * 100)))), 4)
