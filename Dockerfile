@@ -14,4 +14,4 @@ ENV station_id=6 \
     history_path="history.json" \
     frequency_wait=2
 
-CMD [ "pypy3", "./main.py" ]
+CMD [ "pypy3","-u", "./main.py" ]
