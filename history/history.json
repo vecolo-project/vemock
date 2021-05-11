@@ -1,9 +1,9 @@
 {
   "active": true,
   "auto_off": true,
-  "battery": 49.9523,
-  "charging_power": 11.0084,
+  "battery": 49.5807,
+  "charging_power": 0.0,
   "max_charging_power": 20.0,
   "max_seats": 12,
-  "used_seats": 6
+  "used_seats": 1
 }
