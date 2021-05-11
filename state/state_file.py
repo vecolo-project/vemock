@@ -9,6 +9,12 @@ def save_state(filename, state_object):
         fp.write(json.dumps(state_object.__dict__, indent=2, sort_keys=True))
 
 
+def append_state(state_object):
+    with open("history/state.history", 'a') as fp:
+        json.dump(state_object.__dict__, fp)
+        fp.write("\n")
+
+
 def load_state(filename):
     try:
         if os.stat(filename).st_size > 0:
