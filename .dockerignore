@@ -1,0 +1,8 @@
+.idea
+.git
+history
+.gitignore
+venv
+README.md
+history.json
+LICENSE
