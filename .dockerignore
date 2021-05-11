@@ -3,6 +3,7 @@
 history
 .gitignore
 venv
+.env
 README.md
 history.json
 LICENSE
