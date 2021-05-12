@@ -1,0 +1,27 @@
+version: '3.3'
+services:
+  vemock1:
+    environment:
+      - station_id=5
+      - auto_off=true
+      - max_seats=12
+      - history_path=history.json
+      - frequency_wait=2
+    volumes:
+      - volume1:/usr/src/app/history
+    networks:
+      - vemock_network
+    container_name: vemock1
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "30m"
+        max-file: "10"
+    image: vemock
+volumes:
+  volume1:
+    driver: local
+networks:
+  vemock_network:
+    driver: bridge
