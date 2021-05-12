@@ -1,5 +1,7 @@
+import datetime
 import json
 import os
+from time import strftime
 
 from state import State
 
@@ -11,6 +13,7 @@ def save_state(filename, state_object):
 
 def append_state(state_object):
     with open("history/state.history", 'a') as fp:
+        fp.write(datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S") + " : ")
         json.dump(state_object.__dict__, fp)
         fp.write("\n")
 
