@@ -1,9 +1,13 @@
 import os
+import time
 
 from dotenv import load_dotenv
 
 from config import config_reader
 from state import State, state_file, state_bootstrap
+
+os.environ['TZ'] = 'Europe/Paris'  # set new timezone
+time.tzset()
 
 load_dotenv()
 
