@@ -6,3 +6,5 @@ venv/
 history/
 
 **/__pycache__
+
+compose_generator/docker-compose.yml
