@@ -1,7 +1,7 @@
 import json
 
 
-def add_station(station_list, config, fp):
+def add_stations(station_list, config, fp):
     for station in station_list:
         fp.write(f'''
   vemock_station_{station['station_id']}:
@@ -41,7 +41,7 @@ with open("docker-compose.yml", 'w') as file_p:
     config_json = get_json("config.json")
     file_p.write('''version: '3.8'
 services:''')
-    add_station(config_json['station_list'], config_json['config'], file_p)
+    add_stations(config_json['station_list'], config_json['config'], file_p)
     add_volumes(config_json['station_list'], file_p)
     file_p.write('''
 networks:
