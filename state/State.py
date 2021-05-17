@@ -1,26 +1,11 @@
-import datetime
 import random
 
-
-def is_day():
-    return 8 <= datetime.datetime.now().hour <= 19
-
-
-def is_morning():
-    return 8 <= datetime.datetime.now().hour <= 12
-
-
-def is_middle_day():
-    return 12 <= datetime.datetime.now().hour <= 15
-
-
-def is_afternoon():
-    return 15 <= datetime.datetime.now().hour <= 19
+from time_helper.functions import is_day, is_afternoon, is_middle_day, is_morning
 
 
 class State:
     def __init__(self, battery, auto_off, used_seats, max_seats, charging_power=0.0, max_charging_power=20.0,
-                 active=True):
+                 active=True, jwt_token=''):
         self.battery = float(battery)
         self.auto_off = bool(auto_off)
         self.used_seats = int(used_seats)
@@ -28,6 +13,7 @@ class State:
         self.charging_power = float(charging_power)
         self.max_charging_power = float(max_charging_power)
         self.active = bool(active)
+        self.jwt_token = str(jwt_token)
 
     def next_state(self):
         self.next_state_discharge()

@@ -21,13 +21,17 @@ def append_state(state_object):
 def load_state(filename):
     try:
         if os.stat(filename).st_size > 0:
-            print('Found history file, trying to restore previous state\n')
+            print('Found history file, restoring previous state\n')
             with open(filename) as file:
                 return State.State(**json.load(file))
         else:
             return
     except OSError:
         return
+
+
+def print_state(state):
+    print(f'{datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S")} : {state.__dict__}')
 
 
 def get_state(history_filename,
