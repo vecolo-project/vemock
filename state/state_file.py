@@ -1,7 +1,6 @@
 import datetime
 import json
 import os
-from time import strftime
 
 from state import State
 

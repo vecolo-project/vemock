@@ -1,13 +1,14 @@
-import datetime
-import time
+from time import sleep
 
-from state import state_file
+from state.state_file import save_state, print_state, append_state
+from state.api_request import submit_state
 
 
-def loop_state(frequency_wait, history_path, state):
+def loop_state(frequency_wait, history_path, state, jwt_token, api_endpoint):
     while 1:
         state.next_state()
-        state_file.print_state(state)
-        state_file.append_state(state)
-        state_file.save_state(history_path, state)
-        time.sleep(frequency_wait)
+        # print_state(state)
+        # append_state(state)
+        submit_state(api_endpoint, state, jwt_token)
+        save_state(history_path, state)
+        sleep(frequency_wait)
