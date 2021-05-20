@@ -2,3 +2,13 @@
 venv/
 
 .idea/
+
+history/
+
+**/__pycache__
+
+compose_generator/docker-compose.yml
+
+compose_generator/config.json
+
+.env

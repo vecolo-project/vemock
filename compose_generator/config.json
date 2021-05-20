@@ -1,0 +1,65 @@
+{
+  "config": {
+    "frequency_wait": 3,
+    "history_path": "history.json",
+    "max_log_size": "30m",
+    "max_log_file": 10
+  },
+  "station_list": [
+    {
+      "station_id": 1,
+      "auto_off": "True",
+      "max_seats": 12
+    },
+    {
+      "station_id": 2,
+      "auto_off": "True",
+      "max_seats": 6
+    },
+    {
+      "station_id": 3,
+      "auto_off": "False",
+      "max_seats": 28
+    },
+    {
+      "station_id": 4,
+      "auto_off": "True",
+      "max_seats": 10
+    },
+    {
+      "station_id": 5,
+      "auto_off": "True",
+      "max_seats": 10
+    },
+    {
+      "station_id": 6,
+      "auto_off": "True",
+      "max_seats": 10
+    },
+    {
+      "station_id": 7,
+      "auto_off": "True",
+      "max_seats": 10
+    },
+    {
+      "station_id": 8,
+      "auto_off": "True",
+      "max_seats": 10
+    },
+    {
+      "station_id": 9,
+      "auto_off": "True",
+      "max_seats": 10
+    },
+    {
+      "station_id": 10,
+      "auto_off": "True",
+      "max_seats": 10
+    },
+    {
+      "station_id": 11,
+      "auto_off": "True",
+      "max_seats": 10
+    }
+  ]
+}

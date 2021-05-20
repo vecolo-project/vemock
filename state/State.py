@@ -1,26 +1,11 @@
-import datetime
 import random
 
-
-def is_day():
-    return 8 <= datetime.datetime.now().hour <= 19
-
-
-def is_morning():
-    return 8 <= datetime.datetime.now().hour <= 12
-
-
-def is_middle_day():
-    return 11 <= datetime.datetime.now().hour <= 15
-
-
-def is_afternoon():
-    return 12 <= datetime.datetime.now().hour <= 19
+from time_helper.functions import is_day, is_middle_day, is_morning
 
 
 class State:
-    def __init__(self, battery, auto_off, used_seats, max_seats, charging_power=0.0, max_charging_power=20.0,
-                 active=True):
+    def __init__(self, battery, auto_off, used_seats, max_seats, max_charging_power=20.0,
+                 active=True, charging_power=0.0):
         self.battery = float(battery)
         self.auto_off = bool(auto_off)
         self.used_seats = int(used_seats)
@@ -44,10 +29,11 @@ class State:
             discharge = 0.0002 * self.used_seats
         # Le random va tourner plus en faveur du chargement de la batterie si < 15%
         if self.battery > 15:
-            discharge += round(random.uniform(0.000, 0.010), 3)
-
-        # La batterie ne doit pas dépasser 100% et descendre en dessous de 0
-        self.battery = min(100., max(0., float("{:.4f}".format(self.battery - discharge))))
+            discharge += float("{:.4f}".format(random.uniform(0.000, 0.005)))
+            # La batterie ne doit pas dépasser 100% et descendre en dessous de 0
+            self.battery = min(100., max(0., float("{:.4f}".format(self.battery - discharge))))
+        else:
+            self.battery = min(100., max(0., float("{:.4f}".format(self.battery - (discharge / 2)))))
 
     def next_state_active(self):
         if self.auto_off:
@@ -60,11 +46,11 @@ class State:
         # Elle se décharge régulièrement, un peu moins la nuit (vu que moins d'utilisation)
         if is_day():
             random_charge = \
-                random.uniform(-self.max_charging_power / 50, self.max_charging_power / 20) \
+                random.uniform(0, self.max_charging_power / 10) \
                     if is_middle_day() \
-                    else random.uniform(-self.max_charging_power / 50, self.max_charging_power / 50) \
+                    else random.uniform(-self.max_charging_power / 50, self.max_charging_power / 20) \
                     if is_morning() \
-                    else random.uniform(-self.max_charging_power / 50, self.max_charging_power / 40)
+                    else random.uniform(-self.max_charging_power / 50, self.max_charging_power / 30)
 
             self.charging_power = min(self.max_charging_power,
                                       max(0., float("{:.4f}".format(self.charging_power + random_charge))))
@@ -73,7 +59,7 @@ class State:
 
         self.battery = min(100.,
                            max(0., float("{:.4f}".format(
-                               self.battery + (self.charging_power / 20000)))))
+                               self.battery + (self.charging_power / 2000)))))
 
     def next_state_seats(self):
         randmax = 10 if is_day() else 50

@@ -1,4 +1,4 @@
-FROM pypy:3-slim
+FROM python:3-slim
 
 WORKDIR /usr/src/app
 
@@ -12,6 +12,9 @@ ENV station_id=6 \
     auto_off=true \
     max_seats=12 \
     history_path="history.json" \
-    frequency_wait=2
+    frequency_wait=2 \
+    max_charge=20 \
+    jwt_token="secret-token"\
+    api_endpoint="localhost:3000"
 
-CMD [ "pypy3","-u", "./main.py" ]
+CMD [ "python","-u", "./main.py" ]
