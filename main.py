@@ -16,7 +16,7 @@ print(f"Loading conf ...")
 config = config_reader.read_conf_from_env()
 print(f'Loaded : {config.__dict__}')
 
-default_state = State(50, config.auto_off, config.max_seats // 2, config.max_seats)
+default_state = State(50, config.auto_off, config.max_seats // 2, config.max_seats,config.max_charge)
 
 state = state_file.get_state(config.history_path, default_state)
 

@@ -15,4 +15,5 @@ def read_conf_from_env():
                          os.getenv('frequency_wait'),
                          'history/' + os.getenv('history_path'),
                          os.getenv('jwt_token'),
-                         os.getenv('api_endpoint'))
+                         os.getenv('api_endpoint'),
+                         os.getenv('max_charge'))

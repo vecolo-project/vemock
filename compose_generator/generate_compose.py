@@ -11,6 +11,9 @@ def add_stations(station_list, config, fp):
       - max_seats={station['max_seats']}
       - history_path={config['history_path']}
       - frequency_wait={config['frequency_wait']}
+      - max_charge={station['max_charge']}
+      - jwt_token={station['jwt_token']}
+      - api_endpoint={config['api_endpoint']}
     volumes:
       - vemock_station_{station['station_id']}:/usr/src/app/history
     networks:

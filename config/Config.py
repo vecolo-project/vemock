@@ -1,5 +1,5 @@
 class Config:
-    def __init__(self, auto_off, max_seats, station_id, frequency_wait, history_path, jwt_token, api_endpoint):
+    def __init__(self, auto_off, max_seats, station_id, frequency_wait, history_path, jwt_token, api_endpoint, max_charge):
         self.auto_off = bool(auto_off)
         self.max_seats = int(max_seats)
         self.station_id = int(station_id)
@@ -7,3 +7,4 @@ class Config:
         self.history_path = str(history_path)
         self.jwt_token = str(jwt_token)
         self.api_endpoint = str(api_endpoint)
+        self.max_charge = float(max_charge)

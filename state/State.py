@@ -4,8 +4,8 @@ from time_helper.functions import is_day, is_middle_day, is_morning
 
 
 class State:
-    def __init__(self, battery, auto_off, used_seats, max_seats, charging_power=0.0, max_charging_power=20.0,
-                 active=True):
+    def __init__(self, battery, auto_off, used_seats, max_seats, max_charging_power=20.0,
+                 active=True, charging_power=0.0):
         self.battery = float(battery)
         self.auto_off = bool(auto_off)
         self.used_seats = int(used_seats)

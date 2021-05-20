@@ -34,11 +34,12 @@ def print_state(state):
 
 
 def get_state(history_filename,
-              default_state=State.State(50, False, 6, 12)):
+              default_state):
     state = load_state(history_filename)
     if not state:
         state = default_state
     else:
         state.max_seats = default_state.max_seats
         state.auto_off = default_state.auto_off
+        state.max_charging_power = default_state.max_charging_power
     return state
