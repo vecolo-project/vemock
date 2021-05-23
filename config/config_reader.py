@@ -16,4 +16,5 @@ def read_conf_from_env():
                   'history/' + os.getenv('history_path'),
                   os.getenv('jwt_token'),
                   os.getenv('api_endpoint'),
-                  os.getenv('max_charge'))
+                  os.getenv('max_charge'),
+                  os.getenv('debug'))
