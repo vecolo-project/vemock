@@ -12,10 +12,15 @@ def submit_state(api_endpoint, state, jwt_token, debug=True):
         'active': state.active,
         'used_seats': state.used_seats,
     }
-    conn = http.client.HTTPSConnection(api_endpoint.replace('https://', ''))
-    if 'http://' in api_endpoint:
-        conn = http.client.HTTPConnection(api_endpoint.replace('http://', ''))
-    conn.request('POST', '/', json.dumps(data), headers)
+    if 'https://' in api_endpoint:
+        api_endpoint = api_endpoint.replace('https://', '')
+        api_splitted = api_endpoint.split('/', 1)
+        conn = http.client.HTTPSConnection(api_splitted[0])
+    else:
+        api_endpoint = api_endpoint.replace('http://', '')
+        api_splitted = api_endpoint.split('/', 1)
+        conn = http.client.HTTPConnection(api_splitted[0])
+    conn.request('POST', '/' + api_splitted[1], json.dumps(data), headers)
     if debug:
         print(conn.getresponse().read().decode())
     # print(response.read().decode())
