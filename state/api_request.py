@@ -13,7 +13,7 @@ def submit_state(api_endpoint, state, jwt_token, debug=True):
         'used_seats': state.used_seats,
     }
     conn = http.client.HTTPSConnection(api_endpoint)
-    conn.request('POST', '/', json.dumps(data), headers)
+    conn.request('POST', '', json.dumps(data), headers)
     if debug:
         print(conn.getresponse().read().decode())
     # print(response.read().decode())
