@@ -64,7 +64,7 @@ class State:
                                self.battery + (self.charging_power / 2000)))))
 
     def next_state_seats(self, frequency_wait):
-        randmax = 15 / frequency_wait if is_day() else 65 / frequency_wait
+        randmax = round(15 / frequency_wait) if is_day() else round(65 / frequency_wait)
         if self.used_seats > 0:
             if random.randint(0, randmax) == randmax:
                 self.used_seats -= 1
