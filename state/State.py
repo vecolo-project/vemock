@@ -24,12 +24,12 @@ class State:
         # Elle se décharge régulièrement, un peu moins la nuit (vu que moins d'utilisation)
         if is_day():
             # Se décharge plus vite si il y a beaucoup de vélos sur la borne
-            discharge = 0.001 * self.used_seats * frequency_wait
+            discharge = 0.0005 * self.used_seats * frequency_wait
         else:
             discharge = 0.0002 * self.used_seats * frequency_wait
         # Le random va tourner plus en faveur du chargement de la batterie si < 15%
         if self.battery > 15:
-            discharge += float("{:.4f}".format(random.uniform(0.000, 0.005 * frequency_wait)))
+            discharge += float("{:.4f}".format(random.uniform(0.000, 0.0005 * frequency_wait)))
             # La batterie ne doit pas dépasser 100% et descendre en dessous de 0
             self.battery = min(100., max(0., float("{:.4f}".format(self.battery - discharge))))
         else:
@@ -61,7 +61,7 @@ class State:
 
         self.battery = min(100.,
                            max(0., float("{:.4f}".format(
-                               self.battery + (self.charging_power / 2000)))))
+                               self.battery + (self.charging_power / 1000)))))
 
     def next_state_seats(self, frequency_wait):
         randmax = round(15 / frequency_wait) if is_day() else round(65 / frequency_wait)
