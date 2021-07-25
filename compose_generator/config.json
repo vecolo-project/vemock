@@ -1,65 +1,32 @@
 {
   "config": {
-    "frequency_wait": 3,
+    "frequency_wait": 5,
     "history_path": "history.json",
     "max_log_size": "30m",
-    "max_log_file": 10
+    "max_log_file": 10,
+    "api_endpoint": "https://api.vecolo.fr/station-monitoring/add-metric"
   },
   "station_list": [
     {
       "station_id": 1,
       "auto_off": "True",
-      "max_seats": 12
+      "max_seats": 12,
+      "max_charge": 20,
+      "jwt_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjIxNTMyOTQ5fQ.DD_-tRP5Qk_2N8qg_cUpPybJQz27Q0BSW7YkGgGxqiI"
     },
     {
       "station_id": 2,
       "auto_off": "True",
-      "max_seats": 6
+      "max_seats": 6,
+      "max_charge": 20,
+      "jwt_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjIxNTMyOTY2fQ.ekPTzjVM1YW21EmAcepmiGDEdDse9RNIdcvBvTev_hY"
     },
     {
       "station_id": 3,
       "auto_off": "False",
-      "max_seats": 28
-    },
-    {
-      "station_id": 4,
-      "auto_off": "True",
-      "max_seats": 10
-    },
-    {
-      "station_id": 5,
-      "auto_off": "True",
-      "max_seats": 10
-    },
-    {
-      "station_id": 6,
-      "auto_off": "True",
-      "max_seats": 10
-    },
-    {
-      "station_id": 7,
-      "auto_off": "True",
-      "max_seats": 10
-    },
-    {
-      "station_id": 8,
-      "auto_off": "True",
-      "max_seats": 10
-    },
-    {
-      "station_id": 9,
-      "auto_off": "True",
-      "max_seats": 10
-    },
-    {
-      "station_id": 10,
-      "auto_off": "True",
-      "max_seats": 10
-    },
-    {
-      "station_id": 11,
-      "auto_off": "True",
-      "max_seats": 10
+      "max_seats": 28,
+      "max_charge": 20,
+      "jwt_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjIxNTMyOTc1fQ.ewooCSvfX4hc-Gt0mmeuUf1b9BmtvdazvRBgW6Cn18Q"
     }
   ]
 }

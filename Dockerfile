@@ -15,6 +15,7 @@ ENV station_id=6 \
     frequency_wait=2 \
     max_charge=20 \
     jwt_token="secret-token"\
-    api_endpoint="localhost:3000"
+    api_endpoint="https://localhost"\
+    debug=false
 
 CMD [ "python","-u", "./main.py" ]
